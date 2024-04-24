@@ -189,6 +189,9 @@ class TicTacToe:
         self.buttons = [[None]*3 for _ in range(3)]
         self.create_widgets()
         self.game_over = False
+        self.master.iconbitmap(r"C:\Users\rhars\OneDrive\Desktop\projects\aiml\GUI Aplication\32officeicons-20_89419.ico")
+        
+    
 
     def create_widgets(self):
         self.turn_label = tk.Label(self.master, text="X's Turn", font=('normal', 14))
@@ -255,6 +258,7 @@ class RatInAMaze:
         self.walls = set()
         self.cells = []
         self.create_widgets()
+        self.master.iconbitmap(r"C:\Users\rhars\OneDrive\Desktop\projects\aiml\GUI Aplication\32officeicons-20_89419.ico")
 
     def create_widgets(self):
         self.canvas = tk.Canvas(self.master, width=self.columns * self.cell_size, height=self.rows * self.cell_size)
@@ -336,6 +340,7 @@ class WaterJugSolver(tk.Toplevel):
         self.jug1 = 0
         self.jug2 = 0
         self.create_widgets()
+        self.iconbitmap(r"C:\Users\rhars\OneDrive\Desktop\projects\aiml\GUI Aplication\32officeicons-20_89419.ico") 
 
     def create_widgets(self):
         self.label_jug1 = tk.Label(self, text=f'Jug 1: 0/{self.jug1_capacity} L')
@@ -352,6 +357,7 @@ class WaterJugSolver(tk.Toplevel):
         tk.Button(self, text="Pour Jug 2 to Jug 1", command=lambda: self.pour_water(2)).pack()
         tk.Button(self, text="Clear", command=self.clear).pack()
         tk.Button(self, text="Solve", command=self.solve).pack()
+        self.iconbitmap(r"C:\Users\rhars\OneDrive\Desktop\projects\aiml\GUI Aplication\32officeicons-20_89419.ico") 
         
 
     def update_jugs(self, new_jug1, new_jug2):
@@ -373,6 +379,10 @@ class WaterJugSolver(tk.Toplevel):
         self.jug2 = 0
         self.label_jug1.config(text=f'Jug 1: {self.jug1}/{self.jug1_capacity} L')
         self.label_jug2.config(text=f'Jug 2: {self.jug2}/{self.jug2_capacity} L')
+    
+    def check_goal(self):
+        if self.jug1 == self.target or self.jug2 == self.target:
+            messagebox.showinfo("Congratulations!", "You've reached the target amount!")
         
     def solve(self):
         if not self.jug1_capacity or not self.jug2_capacity or not self.target_amount:
@@ -387,6 +397,9 @@ class WaterJugSolver(tk.Toplevel):
             messagebox.showinfo("Solution", " -> ".join(str(step) for step in path))
         else:
             messagebox.showinfo("Solution", "No solution possible.")
+        
+    
+
 
 def water_jug_a_star(jug1_capacity, jug2_capacity, target):
     # Implementation of A* algorithm to solve water jug problem
@@ -444,6 +457,7 @@ class EightPuzzleGUI:
         self.current_state = None
         self.buttons = [[None for _ in range(3)] for _ in range(3)]
         self.create_input_widgets()
+        self.master.iconbitmap(r"C:\Users\rhars\OneDrive\Desktop\projects\aiml\GUI Aplication\32officeicons-20_89419.ico")
 
     def create_input_widgets(self):
         self.entry_widgets_initial = []
@@ -528,6 +542,7 @@ class TSPGui:
         self.canvas.pack(side=tk.LEFT)
         self.cities = []
         self.city_size = 5
+        self.master.iconbitmap(r"C:\Users\rhars\OneDrive\Desktop\projects\aiml\GUI Aplication\32officeicons-20_89419.ico")
         
         control_frame = tk.Frame(self.master)
         control_frame.pack(side=tk.RIGHT, fill=tk.Y)
@@ -618,11 +633,13 @@ class TSPGui:
         if self.cities:
             self.solve_btn.config(state=tk.NORMAL)
             self.clear_btn.config(state=tk.NORMAL)
+
+
 def main():
     root = tk.Tk()
     root.title("Game Selector")
     root.geometry("300x400")
-    icon_path = "C:\\Users\\rhars\\OneDrive\\Desktop\\projects\\aiml\\aiml lab code\\32officeicons-20_89419.ico"
+    icon_path =r"C:\Users\rhars\OneDrive\Desktop\projects\aiml\GUI Aplication\32officeicons-20_89419.ico"
     root.wm_iconbitmap(icon_path)
     
     root.configure(bg="lightblue")
